@@ -33,7 +33,7 @@
         data.addRows(commitsData);
 
         var options = {
-          title: 'Nombre de Commits par Minute',
+          title: 'Suivi des commits',
           hAxis: {title: 'Temps', format: 'HH:mm', viewWindow: {min: new Date(commitsData[0][0]), max: new Date(commitsData[commitsData.length - 1][0])}},
           vAxis: {title: 'Nombre de Commits'},
           legend: 'none',
