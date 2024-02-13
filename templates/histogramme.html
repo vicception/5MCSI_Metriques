@@ -12,22 +12,39 @@
 
       function drawBackgroundColor() {
         function drawChart(data) {
-          
           var dataTable = new google.visualization.DataTable();
           dataTable.addColumn('string', 'Date');
-          dataTable.addColumn('number', 'Valeur');
+          dataTable.addColumn('number', 'Température');
           data.results.forEach(entry => {
             var date = new Date(entry.Jour * 1000);
             dataTable.addRow([date.toLocaleDateString(), entry.temp]);
           });
 
           var options = {
-            title: 'Distribution des températures de Paris pour les 16 prochains jours',
-            legend: { position: 'none' },
-            histogram: { bucketSize: 2 } 
+            title: 'Température de Paris pour les 16 prochains jours',
+            hAxis: {
+              title: 'Date',
+              format: 'd/M/yy',
+              gridlines: { count: -1 },
+              slantedText: true,
+              slantedTextAngle: 45
+            },
+            vAxis: {
+              title: 'Température (°C)',
+              minValue: 0,
+              viewWindow: {
+                min: 0
+              },
+              gridlines: {
+                count: -1
+              },
+              format: 'decimal'
+            },
+            bar: { groupWidth: '90%' },
+            legend: { position: 'none' }
           };
 
-          var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
           chart.draw(dataTable, options);
         }
 
