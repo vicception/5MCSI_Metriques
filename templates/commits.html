@@ -35,7 +35,7 @@
         var options = {
           title: 'Suivi des commits',
           hAxis: {title: 'Temps', format: 'HH:mm', viewWindow: {min: new Date(commitsData[0][0]), max: new Date(commitsData[commitsData.length - 1][0])}},
-          vAxis: {title: 'Nombre de Commits'},
+          vAxis: {title: 'Nombre de Commits', minValue: 0, format: '0', gridlines: {count: -1}},
           legend: 'none',
           histogram: { bucketSize: 2 },
         };
